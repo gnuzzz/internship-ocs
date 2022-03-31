@@ -1,17 +1,28 @@
 package ru.digitalleague.ocs.internship.lesson15;
 
-public class Category {
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-    private Long id;
+@Entity
+@Table(name = "categories")
+public class Category extends DBEntity {
+
+    @Column(name = "name")
     private String name;
 
-    public Category(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    private List<Book> books;
+
+    public Category() {
     }
 
-    public Long getId() {
-        return id;
+    public Category(Long id, String name) {
+        super(id);
+        this.name = name;
     }
 
     public String getName() {
@@ -22,23 +33,16 @@ public class Category {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Category category = (Category) o;
-
-        return id != null ? id.equals(category.id) : category.id == null;
+    public List<Book> getBooks() {
+        return books;
     }
 
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override
     public String toString() {
-        return "id: " + id + ", name: " + name;
+        return "id: " + getId() + ", name: " + getName();
     }
 }

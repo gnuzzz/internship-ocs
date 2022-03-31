@@ -10,8 +10,8 @@ public class Chapter01 {
     public static void main(String[] args) throws Exception {
         Class.forName("org.postgresql.Driver");
         try (Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres")) {
-            JDBCCatalogRepository repository = new JDBCCatalogRepository(conn);
-            JDBCCatalogService catalog = new JDBCCatalogService(repository);
+//            JDBCCatalogRepository repository = new JDBCCatalogRepository(conn);
+//            JDBCCatalogService catalog = new JDBCCatalogService(repository);
 
 //            List<Category> categories = catalog.getAllCategories();
 //            for (Category category: categories) {
@@ -47,6 +47,12 @@ public class Chapter01 {
 //            Author a2 = catalog.createAuthor("Борис Стругацкий");
 //            Category c1 = catalog.getCategory("Фантастика");
 //            Book b1 = catalog.createBook("Понедельник начинается в субботу", Arrays.asList(a1, a2), c1);
+//            System.out.println(b1);
+
+//            Author a1 = catalog.getAuthor("Аркадий Стругацкий");
+//            Author a2 = catalog.getAuthor("Борис Стругацкий");
+//            Category c1 = catalog.getCategory("Фантастика");
+//            Book b1 = catalog.createBook("Сказка о тройке", Arrays.asList(a1, a2), c1, "troika.png");
 //            System.out.println(b1);
         }
     }
